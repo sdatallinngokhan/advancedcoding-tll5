@@ -32,6 +32,9 @@ public class NumberFinder {
                     if (line.length() != i + 1 && !Character.isDigit(line.charAt(i + 1))) {
                         numbers.add(Integer.parseInt(number));
                         number = "";
+                    } else if (line.length() == i + 1 && !number.equals("")) {
+                        numbers.add(Integer.parseInt(number));
+                        number = "";
                     }
                 }
             }
