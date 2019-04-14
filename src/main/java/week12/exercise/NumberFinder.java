@@ -1,29 +1,12 @@
 package week12.exercise;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberFinder {
-
-    public List<String> getFileContent(String readingPath) {
-        List<String> lines = new ArrayList<>();
-        try {
-            Path path = Paths.get(readingPath);
-            lines = Files.readAllLines(path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return lines;
-    }
+public class NumberFinder extends IOOperations {
 
     private List<Integer> getNumbersFromFile(List<String> lines) {
         List<Integer> numbers = new ArrayList<>();
-
         lines.stream().forEach(line -> {
             String number = "";
             for (int i = 0; i < line.length(); i++) {
@@ -47,7 +30,7 @@ public class NumberFinder {
         NumberFinder numberFinder = new NumberFinder();
 
         String readingPath = "/Users/gokhanpolat/Developer/advancedCoding-tll5/numbers.txt";
-        List<String> lines = numberFinder.getFileContent(readingPath);
+        List<String> lines = numberFinder.readFileLines(readingPath);
 
         List<Integer> numbers = numberFinder.getNumbersFromFile(lines);
 
@@ -60,5 +43,4 @@ public class NumberFinder {
 
         System.out.println("Sum up of numbers : " + sumUpOfNumbers);
     }
-
 }
