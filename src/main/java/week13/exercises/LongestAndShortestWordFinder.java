@@ -3,9 +3,10 @@ package week13.exercises;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class LongestAndShortestWordFinder {
 
@@ -29,8 +30,8 @@ public class LongestAndShortestWordFinder {
         String longestWord = lines.get(0).split(" ")[0];
         int longestWordLetterCount = longestWord.length();
 
-        List<String> shortestWords = new ArrayList<>();
-        List<String> longestWords = new ArrayList<>();
+        Set<String> shortestWords = new HashSet<>();
+        Set<String> longestWords = new HashSet<>();
 
         for (String line : lines) {
             String[] words = line.split(" ");
