@@ -3,6 +3,7 @@ package week13.exercises;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,6 +29,9 @@ public class LongestAndShortestWordFinder {
         String longestWord = lines.get(0).split(" ")[0];
         int longestWordLetterCount = longestWord.length();
 
+        List<String> shortestWords = new ArrayList<>();
+        List<String> longestWords = new ArrayList<>();
+
         for (String line : lines) {
             String[] words = line.split(" ");
 
@@ -47,8 +51,32 @@ public class LongestAndShortestWordFinder {
             }
         }
 
-        System.out.println("Shortest word is : " + shortestWord);
-        System.out.println("Longest word is : " + longestWord);
+        for (String line : lines) {
+            String[] words = line.split(" ");
+
+            for (String word : words) {
+                word = word.trim();
+                if (word.length() != 1 && !isDigit(word)) {
+                    if (word.length() == shortestWord.length()) {
+                        shortestWords.add(word);
+                    }
+
+                    if (word.length() == longestWord.length()) {
+                        longestWords.add(word);
+                    }
+                }
+            }
+        }
+
+        for (String shortest : shortestWords) {
+            System.out.print(shortest + ", ");
+        }
+
+        System.out.println();
+
+        for (String longest : longestWords) {
+            System.out.print(longest + ", ");
+        }
     }
 
     private boolean isDigit(String word) {
