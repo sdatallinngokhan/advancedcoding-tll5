@@ -7,7 +7,6 @@ public class LCMFinder {
         int primeCandidate = 2;
 
         while (true) {
-
             if (isPrime(primeCandidate)) {
                 boolean shouldLCMBeMultiplied = false;
                 for (int i = 0; i < arr.length; i++) {
@@ -20,18 +19,18 @@ public class LCMFinder {
                 if (shouldLCMBeMultiplied) {
                     LCM *= primeCandidate;
                 }
+            }
 
-                boolean shouldPrimeCandidateIsIncreased = true;
-                for (int element : arr) {
-                    if (element % primeCandidate == 0) {
-                        shouldPrimeCandidateIsIncreased = false;
-                        break;
-                    }
+            boolean shouldPrimeCandidateIsIncreased = true;
+            for (int element : arr) {
+                if (element % primeCandidate == 0) {
+                    shouldPrimeCandidateIsIncreased = false;
+                    break;
                 }
+            }
 
-                if (shouldPrimeCandidateIsIncreased) {
-                    primeCandidate++;
-                }
+            if (shouldPrimeCandidateIsIncreased) {
+                primeCandidate++;
             }
 
             boolean areAll1 = true;
@@ -69,10 +68,8 @@ public class LCMFinder {
     public static void main(String[] args) {
         LCMFinder lcmFinder = new LCMFinder();
 
-        int[] arr = {3, 6, 5};
-
+        int[] arr = {12, 15, 44, 4, 5};
         int result = lcmFinder.getLCM(arr);
-
         System.out.println(result);
     }
 }
